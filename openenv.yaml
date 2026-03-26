@@ -1,0 +1,38 @@
+name: data-cleaning-env
+description: OpenEnv environment for automated data cleaning tasks including handling missing values, duplicates, and irrelevant columns.
+
+version: 1.0.0
+
+entry_point: env.environment:DataCleaningEnv
+
+author: Zeeshan
+
+tasks:
+  - id: easy
+    description: Fill missing values in dataset
+    max_steps: 10
+
+  - id: medium
+    description: Remove duplicates and fill missing values
+    max_steps: 10
+
+  - id: hard
+    description: Fully clean dataset (missing values, duplicates, drop useless columns)
+    max_steps: 10
+
+observation_space:
+  dataset: list
+  missing_values: int
+  duplicate_rows: int
+  columns: list
+  step_count: int
+
+action_space:
+  action_type: str
+  column: str
+  method: str
+  value: any
+
+reward:
+  type: float
+  range: [0.0, 1.0]
