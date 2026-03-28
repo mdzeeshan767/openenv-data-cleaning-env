@@ -6,5 +6,5 @@ COPY . /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 👇 IMPORTANT: keep container alive + run script
+
 CMD python scripts/run_baseline.py
