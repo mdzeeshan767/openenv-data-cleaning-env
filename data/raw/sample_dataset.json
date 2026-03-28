@@ -1,0 +1,11 @@
+[
+  {"name": "Alice", "age": 25, "email": null, "city": "New York"},
+  {"name": "Bob", "age": null, "email": "bob@example.com", "city": "Los Angeles"},
+  {"name": "Bob", "age": null, "email": "bob@example.com", "city": "Los Angeles"},
+  {"name": "Charlie", "age": 30, "email": "", "city": "Chicago"},
+  {"name": "David", "age": null, "email": "david@example.com", "city": null},
+  {"name": "Eve", "age": 22, "email": null, "city": "San Francisco"},
+  {"name": "Frank", "age": null, "email": "frank@example.com", "city": ""},
+  {"name": "Grace", "age": 27, "email": "grace@example.com", "city": "Boston"},
+  {"name": "Grace", "age": 27, "email": "grace@example.com", "city": "Boston"}
+]
