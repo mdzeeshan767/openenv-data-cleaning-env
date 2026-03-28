@@ -98,11 +98,27 @@ class DataCleaningEnv:
         missing = self._count_missing()
         duplicates = self._count_duplicates()
 
-        # Simple scoring logic
-        score = 1.0 - (0.1 * missing + 0.2 * duplicates)
+        # Base penalties
+        missing_penalty = 0.1 * missing
+        duplicate_penalty = 0.2 * duplicates
+
+        #  Step penalty (prevents useless looping)
+        step_penalty = 0.02 * self.step_count
+
+        #  Total score
+        score = 1.0 - (missing_penalty + duplicate_penalty + step_penalty)
+
+        # Clamp score between 0 and 1
         score = max(0.0, min(1.0, score))
+
+        # Feedback message
+        message = (
+            f"Missing: {missing}, "
+            f"Duplicates: {duplicates}, "
+            f"Steps: {self.step_count}"
+        )
 
         return Reward(
             score=score,
-            message=f"Missing: {missing}, Duplicates: {duplicates}"
+            message=message
         )
