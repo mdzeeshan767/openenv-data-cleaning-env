@@ -6,4 +6,4 @@ ENV PYTHONPATH=/app
 COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "scripts/run_baseline.py"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
