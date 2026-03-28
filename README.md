@@ -1,3 +1,11 @@
+---
+title: OpenEnv Data Cleaning Environment
+emoji: 🧹
+colorFrom: blue
+colorTo: green
+sdk: docker
+---
+
 # openenv-data-cleaning-env
 Data Cleaning & Preprocessing Environment (OpenEnv)<br>
 This project implements a **real-world OpenEnv environment** where an AI agent learns to clean and preprocess messy datasets — a critical task in data science and machine learning pipelines.<br>
