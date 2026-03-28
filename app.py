@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from env.environment import DataCleaningEnv
 from env.models import Action
+import json
 
 app = FastAPI()
 
 # Load dataset
-import json
 with open("data/raw/sample_dataset.json") as f:
     dataset = json.load(f)
 
@@ -15,19 +15,36 @@ env = DataCleaningEnv(dataset)
 @app.post("/reset")
 def reset():
     obs = env.reset()
-    return obs.dict()
+    return {
+        "dataset": obs.dataset,
+        "missing_values": obs.missing_values,
+        "duplicate_rows": obs.duplicate_rows,
+        "columns": obs.columns,
+        "step_count": obs.step_count
+    }
 
-# STATE
+#  STATE
 @app.get("/state")
 def state():
     return env.state()
 
 # STEP
 @app.post("/step")
-def step(action: Action):
-    obs, reward, done, _ = env.step(action)
+def step(action: dict):
+    action_obj = Action(**action)
+    obs, reward, done, _ = env.step(action_obj)
+
     return {
-        "observation": obs.dict(),
-        "reward": reward.dict(),
+        "observation": {
+            "dataset": obs.dataset,
+            "missing_values": obs.missing_values,
+            "duplicate_rows": obs.duplicate_rows,
+            "columns": obs.columns,
+            "step_count": obs.step_count
+        },
+        "reward": {
+            "score": reward.score,
+            "message": reward.message
+        },
         "done": done
     }
