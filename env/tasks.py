@@ -1,3 +1,9 @@
+
+import json
+#Load dataset from file
+def load_dataset():
+    with open("data/raw/sample_dataset.json", "r") as f:
+        return json.load(f)
 from typing import Dict, Any, Callable
 from env.environment import DataCleaningEnv
 
@@ -5,11 +11,7 @@ from env.environment import DataCleaningEnv
 #  Sample datasets for tasks
 
 # EASY: Only missing values
-easy_dataset = [
-    {"name": "Alice", "age": 25},
-    {"name": "Bob", "age": None},
-    {"name": "Charlie", "age": None},
-]
+easy_dataset = load_dataset()
 
 # MEDIUM: Missing + duplicates
 medium_dataset = [
