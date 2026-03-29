@@ -48,3 +48,11 @@ def step(action: dict):
         },
         "done": done
     }
+# server/app.py
+
+def main():
+    print("Server started")
+
+# Standard Python entry point
+if __name__ == "__main__":
+    main()
